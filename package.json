@@ -1,0 +1,25 @@
+{
+	"name": "@thoughtsunificator/command-processor",
+	"type": "module",
+	"main": "index.js",
+	"version": "1.0.0",
+	"description": "Command processor",
+	"scripts": {
+		"test": "mocha",
+		"generate-docs": "jsdoc --configure .jsdoc.json --verbose",
+		"lint": "eslint src/**/*.js"
+	},
+	"devDependencies": {
+		"eslint": "^7.28.0",
+		"mocha": "^9.1.1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/thoughtsunificator/command-processor.git"
+	},
+	"bugs": {
+		"url": "https://github.com/thoughtsunificator/command-processor/issues"
+	},
+	"author": "Romain Lebesle <oss@thoughtsunificator.me> (https://thoughtsunificator.me)",
+	"license": "MIT"
+}
