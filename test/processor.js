@@ -1,6 +1,6 @@
 import { Binding } from "domodel"
 
-import Processor from "../src/processor.js"
+import { Processor } from "../index.js"
 
 describe("processor", () => {
 
