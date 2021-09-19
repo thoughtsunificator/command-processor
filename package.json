@@ -2,7 +2,7 @@
 	"name": "@thoughtsunificator/command-processor",
 	"type": "module",
 	"main": "index.js",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "Command processor",
 	"scripts": {
 		"test": "mocha",
