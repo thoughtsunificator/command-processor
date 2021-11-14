@@ -9,6 +9,10 @@ class Processor {
 	 * @type {String}
 	 */
 	static PREFIX_COMMAND = "/"
+	static ERROR = {
+		COMMAND_NOT_FOUND: "COMMAND_NOT_FOUND",
+		MISSING_ARGS: "MISSING_ARGS"
+	}
 
 	/**
 	 * @param {Command[]} commands
@@ -24,7 +28,7 @@ class Processor {
 		if (tokens.length > 1) {
 			args = tokens.slice(1)
 		}
-		for (const command of this._commands) {
+		for (const command of this.commands) {
 			const itemTokens = command.syntax.split(" ")
 			const itemName = itemTokens[0].toLowerCase()
 			let itemArgs = []
@@ -42,9 +46,13 @@ class Processor {
 						argName = arg.substr(1, arg.length - 2)
 					}
 					if (index + 1 > args.length && optional === false) {
-						return { error: `Missing args, syntax is : ${command.syntax}` }
+						return { error: Processor.ERROR.MISSING_ARGS }
 					} else {
-						commandArguments[argName] = args[index]
+						if(index === itemArgs.length - 1) {
+							commandArguments[argName] = args.slice(index).join(" ")
+						} else {
+							commandArguments[argName] = args[index]
+						}
 					}
 				}
 				const keys = Object.keys(commandArguments)
@@ -57,7 +65,7 @@ class Processor {
 				return { data: command.data, args: dataArgs }
 			}
 		}
-		return { error: `Command not found` }
+		return { error: Processor.ERROR.COMMAND_NOT_FOUND }
 	}
 
 	/**
